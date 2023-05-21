@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styleTPjs.css">
+</head>
+
+<body>
+    <header>
+        <img src="images/locationIcon.png" class="Logo" alt="">
+        <div class="Header_Title_Div">
+            <h1>Location</h1>
+        </div>
+        <img src="images/R.png" class="sus" alt="">
+    </header>
+    <section>
+        
+        
+        <div class="Informations_General">
+            <div class="Informations_And_IP">
+                <div class="Your_IP" >
+                    <form action="">
+                        <table>
+                            <tr>
+                                <td colspan="2">
+                                    <label for="countrysearch" id="IP">IP : </label>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+                <div class="Select_Informations">
+                    <form action="" name="form_choices">
+                        <table>
+                            <tr>
+                                <td colspan="2">
+                                    <input type="button" class="Submit_Button" onclick="listdata();" value="Search">
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>  
+            <div id="Information_Display" class="Informations">
+
+            </div>    
+        </div>
+        
+    </section>
+    <script src=
+        "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    </script>
+    <script>
+        var ip_global;
+        var data;
+        $.get("https://ipinfo.io", function(response) {
+            document.getElementById("IP").innerHTML = "IP : " + response.ip;
+            //alert(response.ip);
+            ip_global = response.ip;
+        }, "json")
+    async function listdata()
+    {
+        
+        let countrydiv = document.getElementById("CountryInput");
+        //let ip = "8.8.8.8"
+        const url = `https://ip-geo-location4.p.rapidapi.com/?ip=${ip_global}`
+        const options = {
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': '52dda8f695msh484f288f973a837p116794jsn900f27f243c1',
+                'X-RapidAPI-Host': 'ip-geo-location4.p.rapidapi.com'
+            }
+        };
+
+        try {
+            const response = await fetch(url, options);
+            const result = await response.json();
+            console.log(result);
+            data = result;
+            DisplayInformation(data);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    function DisplayInformation(data)
+    {
+        const table = document.createElement("table");
+        const tr_Currency = document.createElement("tr");
+        const td_Currency = document.createElement("td");
+        const tr_Currency_Code = document.createElement("tr");
+        const td_Currency_Code = document.createElement("td");
+        const tr_Country_Code = document.createElement("tr");
+        const td_Country_Code = document.createElement("td");
+        const tr_Capital = document.createElement("tr");
+        const td_Capital = document.createElement("td");
+        const tr_Continent_Name = document.createElement("tr");
+        const td_Continent_Name = document.createElement("td");
+        const tr_Continent_Code = document.createElement("tr");
+        const td_Continent_Code = document.createElement("td");
+        const tr_Region_Name = document.createElement("tr");
+        const td_Region_Name = document.createElement("td");
+        const tr_City = document.createElement("tr");
+        const td_City = document.createElement("td");
+        document.getElementById("Information_Display").appendChild(table);
+        table.style.borderCollapse = "collapse";
+        table.style.border = "2px solid black";
+        tr_Currency.innerHTML = "Currency"
+        tr_Currency_Code.innerHTML = "Currency Code";
+        tr_City.innerHTML = "City";
+        tr_Country_Code.innerHTML = "Country Code";
+        tr_Capital.innerHTML = "Capital";
+        tr_Continent_Code.innerHTML = "Continent Code";
+        tr_Continent_Name.innerHTML = "Continent Name";
+        tr_Region_Name.innerHTML = "Region";
+
+
+        td_Currency.innerHTML =  "Dinar";
+        td_Currency_Code.innerHTML = /*data.currency.code;*/ "DT";
+        td_City.innerHTML = /*data.city.name;*/ "Ariana";
+        td_Country_Code.innerHTML = /*data.country.country_code;*/ "Tunisia";
+        td_Capital.innerHTML = /*data.country.capital;*/ "Tunis";
+        td_Continent_Code.innerHTML = /*data.continent.continent_code;*/ "AF";
+        td_Continent_Name.innerHTML = /*data.continent.continent_name;*/"Africa";
+        td_Region_Name.innerHTML = /*data.city.region_name;*/ "Tunis";
+
+
+        table.appendChild(tr_Currency);
+        table.appendChild(tr_Currency_Code);
+        table.appendChild(tr_City);
+        table.appendChild(tr_Country_Code);
+        table.appendChild(tr_Capital);
+        table.appendChild(tr_Continent_Code);
+        table.appendChild(tr_Continent_Name);
+        table.appendChild(tr_Region_Name);
+        
+        
+        tr_Currency.appendChild(td_Currency);
+        tr_Currency_Code.appendChild(td_Currency_Code);
+        tr_City.appendChild(td_City);
+        tr_Country_Code.appendChild(td_Country_Code);
+        tr_Capital.appendChild(td_Capital);
+        tr_Continent_Code.appendChild(td_Continent_Code);
+        tr_Continent_Name.appendChild(td_Continent_Name);
+        tr_Region_Name.appendChild(td_Region_Name); 
+    }
+        </script>
+</body>
+</html>

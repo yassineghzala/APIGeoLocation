@@ -1,0 +1,73 @@
+*{
+    font-family:bahnschrift;
+    font-size:20px;
+    zoom: 100%;
+}
+body{
+    background-color:#E8EEF1;
+    margin:0%;
+}
+Header{
+    display:flex;
+    background-color:#98042D;
+    Height:90px;
+}
+.Header_Title_Div{
+    display:flex;
+    align-items:center;
+    font-family:serif;
+    font-style:italic;
+    color:#E8EEF1;
+    margin-top:0px;
+}
+.Logo{
+    width:80px;
+    height:80px;
+    margin-top:5px;
+}
+.sus{
+    width:2px;
+    height:2px;
+}
+.Your_IP{
+    font-size:25px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius:4px;
+    width:100%;
+    height:40px;
+    padding:25px;
+    margin-top:15%;
+    margin-left:5%;
+}
+.Select_Informations{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    width:100%;
+    height:35px;
+    padding:25px;
+    margin-top:10%;
+    margin-left:5%;
+}
+.Informations{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    width:15%;
+    height:450px;
+    padding:25px;
+    margin-top:2.5%;
+    margin-bottom:5%;
+    margin-left:10%;
+}
+.Informations_General{
+    display:flex;
+}
+.Submit_Button{
+    font-size:15px;
+    width:100%;
+    padding:5px;
+}
+.Informations_And_IP{
+    margin-left:2.5%;
+}
+table,tr,th,td{
+    border-collapse: collapse;
+    border:1px solid black;
+}
